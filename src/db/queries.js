@@ -193,13 +193,14 @@ const getLogin = (request, response, next) => {
     if (error) {
       throw error
     }
-    if (results.rows.length === 0) {
+    console.log('results length', results.rows.length)
+    if (!results.rows.length) {
       // status 401: unauthorized client
       response.status(401).json({ message: "Invalid Username" });
     }
    
     const foundUser = results;
-
+     
      // if the user exists, compare hashed password to a new hash from req.body.password
      // https://www.npmjs.com/package/bcrypt
      bcrypt.compare(
@@ -208,7 +209,7 @@ const getLogin = (request, response, next) => {
       foundUser.rows[0].password, function(err,results) {
       
           // bcrypt.compare returns a boolean to us, if it is false the passwords did not match!
-          if (results === false) {
+          if (err || results === false) {
             return response.status(401).json({ message: "Invalid Password" });
           }
   

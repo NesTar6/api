@@ -93,7 +93,7 @@ async function displayUserFavs(request, response, next){
       })
       .catch(err => console.log(err.data))
       if(i === favoriteDogs.length - 1) {
-        response.status(200).send(JSON.stringify(favArrResult))
+        response.status(200).send(favArrResult)
       }
     }
   }
