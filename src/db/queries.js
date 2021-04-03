@@ -109,8 +109,8 @@ const accessPreferences = (request, response, next) => {
 const postDog = (request, response, next) => {
   const userID = parseInt(request.params.id)
   console.log(request.params)
-  const {name, children, cats, spayed, special_needs, shots_current, age, gender, description, image, location} = request.body;
-  pool.query('INSERT INTO new_dogs (user_id, name, children_friendly, cat_friendly, spayed_newtered, special_needs, shots_current, age, gender, description, image, location) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING new_dogs_id', [userID, name, children, cats, spayed, special_needs, shots_current, age, gender, description, image, location], (error, results) => {
+  const {name, children, cats, spayed, special_needs, shots_current, age, gender, description, photos, location} = request.body;
+  pool.query('INSERT INTO new_dogs (user_id, name, children_friendly, cat_friendly, spayed_newtered, special_needs, shots_current, age, gender, description, photos, location) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING new_dogs_id', [userID, name, children, cats, spayed, special_needs, shots_current, age, gender, description, photos, location], (error, results) => {
     if (error) {
       throw error;
     }
@@ -193,6 +193,7 @@ const getLogin = (request, response, next) => {
     if (error) {
       throw error
     }
+    console.log(results.rows.length)
     if (results.rows.length === 0) {
       // status 401: unauthorized client
       response.status(401).json({ message: "Invalid Username" });

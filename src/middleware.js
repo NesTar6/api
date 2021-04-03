@@ -1,7 +1,7 @@
 const axios = require('axios');
 
-const key = 'apyx0Ol9KonQvo8YJp5ZetIUv5IEgX1xtKtsAQ1sfcCYy9YH9w';
-const secret = 'FY7ntewUL1pRq9Qd0DxAHIXGSyZ8yHcxNMcrKwH1';
+const key = 'Lejh5iCukItRKi0jd66sWWiIFZHCgRtcSQnFgZcbrxgQ2xcf7S';
+const secret = 'SKMPZVSLHEmPax3HrzRuy0HxBKCYJGZLsPPWgW3n';
 const org = 'RI77';
 const status = 'adoptable';
 
